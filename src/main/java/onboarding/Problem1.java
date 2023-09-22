@@ -30,14 +30,24 @@ class Problem1 {
         int right = pages.get(1);
     }
 
-    public static int changeToNum(int pageNum){ // 페이지 100의자리 10의 자리 등등
+    public static int[] changeToNum(int pageNum){ // 페이지 100의자리 10의 자리 등등
         int onePage = pageNum % 10;// get(0), get(1) 왼, 오 일의 자리
         int twoPage = (pageNum % 100 ) / 10;
         int threePage = ((pageNum % 1000) / 100);
 
-        int addPage = onePage + twoPage + threePage;
+        int[] digit = { onePage, twoPage, threePage};
 
-        return addPage;
+        return digit;
+    }
+
+    public static int numAddPage(int pageNum){ // 더하는 메서드
+        int[] digit = changeToNum(pageNum);
+        int addNum = 0;
+        for(int digits : digit){
+            addNum += digits;
+        }
+
+        return addNum;
     }
 
 }
